@@ -17,6 +17,9 @@ static const char* REMOTE_MAC = "18:bf:1c:96:a0:2d";
 
 bool readyMessageShown = false;
 
+uint32_t lastBatteryLog = 0;
+const uint32_t batteryInterval = 5000; // 5 sekund
+
 void setup() {
   Serial.begin(115200);
   delay(1000);
@@ -24,8 +27,9 @@ void setup() {
   Serial.println();
   Serial.println("=== Xiaomi XMRM-006 example ===");
 
-  remote.setReconnectInterval(5000);   // default: 5000 ms
-  remote.setAutoReconnect(true);       // default: enabled
+  remote.setReconnectInterval(5000);
+  remote.setAutoReconnect(true);
+  remote.setBatteryReadInterval(10000);
 
   bool ok = remote.begin(REMOTE_MAC);
 
@@ -51,10 +55,20 @@ void loop() {
     readyMessageShown = false;
     Serial.println(">> Remote NOT ready.");
   }
+  
+  if (millis() - lastBatteryLog >= batteryInterval) {
+    lastBatteryLog = millis();
 
-  // Simple connection check
-  if (!remote.isConnected()) {
-    // You can add LED or status handling here
+    int battery = remote.getBatteryLevel();
+
+    Serial.print("[BATTERY] ");
+
+    if (battery >= 0) {
+      Serial.print(battery);
+      Serial.println("%");
+    } else {
+      Serial.println("not available");
+    }
   }
 
   // Read events
