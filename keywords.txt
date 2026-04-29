@@ -4,15 +4,9 @@ update	KEYWORD2
 isConnected	KEYWORD2
 isReady	KEYWORD2
 available	KEYWORD2
-readEvent	KEYWORD2
 readDecoded	KEYWORD2
 readRaw	KEYWORD2
 getLastDecoded	KEYWORD2
 getLastRaw	KEYWORD2
-getLastPressedState	KEYWORD2
 setReconnectInterval	KEYWORD2
 setAutoReconnect	KEYWORD2
-getBatteryLevel	KEYWORD2
-getLastBatteryLevel	KEYWORD2
-hasBatteryLevel	KEYWORD2
-setBatteryReadInterval	KEYWORD2
