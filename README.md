@@ -23,10 +23,20 @@ Connects to the remote by MAC address and provides:
 
 ---
 
+
 ## Supported hardware
 
 - ESP32  
 - ESP32-C3  
+
+---
+
+## Tested environment
+
+Tested and working with:
+
+- Arduino IDE 2.3.4
+- ESP32 Arduino Core 3.3.7
 
 ---
 
